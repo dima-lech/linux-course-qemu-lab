@@ -1,0 +1,8 @@
+::sysinit:mkdir -p /proc /sys /var/log
+::sysinit:mount -t proc none /proc
+::sysinit:mount -t sysfs none /sys
+::sysinit:mdev -d
+::sysinit:syslogd
+::sysinit:logger "=== logging start ==="
+::sysinit:echo "=== Hello World! ==="
+::respawn:-/bin/bash
