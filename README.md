@@ -1,26 +1,124 @@
 # Linux Course - QEMU Lab
 
-## Based on
+This repository walks through:
+* Setting up QEMU to emulate ARM target
+* Building custom (minimal) Linux environment, including busybox
+* Running resulting images in QEMU
 
-https://github.com/veltzer/demos-qemu
+***NOTE***: scripts are provided here for ease of usage. It is ***very*** recommended to read through the scripts to understand what is being done, better yet to perform each action manually.
 
 
-## Linux
+## Credit
 
-Kernel version: 6.7.5
+Full credit goes to:
+Mark Veltzer
+> https://github.com/veltzer/demos-qemu
+
+
+## Target Hardware
+
+Emulated target is: Arm Versatile Board (versatilepb)
+> https://www.qemu.org/docs/master/system/arm/versatile.html
+
+
+## Setup
+
+Install following package for QEMU ARM architecture:
+> qemu-system-arm
+
+In Ubuntu:
+```
+sudo apt install qemu-system-arm
+```
+
+Install following package for ARM cross-compiler:
+> gcc-arm-linux-gnueabi
+
+In Ubuntu:
+```
+sudo apt install gcc-arm-linux-gnueabi
+```
+
+Additional packages may be required throughout these instructions, install as needed.
+For example on Ubuntu:
+```
+sudo apt install gcc make flex bison libncurses-dev (...)
+```
+
+
+## Build
+
+### Linux
+
+Kernel version used: 6.7.5 (probably could be used with any 6.7.***x***)
+
+Obtain from:
+> https://kernel.org
+
+For example:
+```
+wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.5.tar.xz
+```
+Extract archive
+```
+tar -xvf linux-6.7.5.tar.xz
+```
+Change directory
+```
+cd linux-6.7.5
+```
+Build *versatile_defconfig* configuration
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- versatile_defconfig
 ```
 
-## Busybox
+### Busybox
 
-Version: 1.36.1
+Busybox version used: 1.36.1
 
-> Enabled static build option
+Obtain Busybox sources
+```
+wget https://busybox.net/downloads/busybox-1.36.1.tar.bz2
+```
+Change directory
+```
+cd busybox-1.36.1
+```
+Configure using menu
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
+```
+Enable static build option
+> Settings --> Build static binary
 
-## Bash
+Build Busybox
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j`nproc`
+```
+Install Busybox - organize all running environment binaries in *_install* directory
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- install
+```
 
-Version: 5.2.21
+
+### (ADVANCED - NOT REQUIRED) Bash
+
+Bash version used: 5.2.21
+
+Good luck :)
+
+
+## Package
+
+See *pack.sh* script for packaging Busybox environment (*_install direcroty*) into an archive.
+An empty environment directory has to be created first, for example: *env_dir*
+```
+mkdir env_dir
+```
+Script usage:
+```
+./pack.sh env_dir
+```
 
 
 
