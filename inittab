@@ -5,4 +5,4 @@
 ::sysinit:syslogd
 ::sysinit:logger "=== logging start ==="
 ::sysinit:echo "=== Hello World! ==="
-::respawn:-/bin/bash
+::respawn:-/bin/sh
