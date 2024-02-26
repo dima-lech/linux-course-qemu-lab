@@ -90,6 +90,10 @@ Obtain Busybox sources
 ```
 wget https://busybox.net/downloads/busybox-1.36.1.tar.bz2
 ```
+Extract archive
+```
+tar -xvf busybox-1.36.1.tar.bz2
+```
 Change directory
 ```
 cd busybox-1.36.1
