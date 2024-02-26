@@ -5,7 +5,7 @@ if [ ! -d "$1" ]; then
 	exit
 fi
 
-cp -v bash-5.2.21/bash busybox-1.36.1/_install/bin
+# cp -v bash-5.2.21/bash busybox-1.36.1/_install/bin
 pushd busybox-1.36.1/_install 
 mkdir -p etc
 cp ../../inittab etc
