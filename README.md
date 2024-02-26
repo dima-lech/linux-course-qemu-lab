@@ -141,7 +141,7 @@ chmod +x pack.sh
 ```
 (*chmod* has to be done only once)
 
-Review contents of env_dir.
+Review contents of *env_dir*.
 
 ## Run
 
