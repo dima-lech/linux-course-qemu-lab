@@ -14,6 +14,12 @@ Full credit goes to:
 Mark Veltzer
 > https://github.com/veltzer/demos-qemu
 
+## Additional Reading
+
+Bootlin - Embedded Linux training
+
+> https://bootlin.com/training/embedded-linux
+
 
 ## Target Hardware
 
@@ -74,6 +80,10 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- versatile_defconfig
 
 ### Busybox
 
+Busybox provides a minimal user-space runtime environment, and includes:
+* Shell (*sh*)
+* Utilities (*ls*, *cat*, ...)
+
 Busybox version used: 1.36.1
 
 Obtain Busybox sources
@@ -107,18 +117,44 @@ Bash version used: 5.2.21
 
 Good luck :)
 
+(hint: see configure-make-bash.sh)
+
 
 ## Package
 
-See *pack.sh* script for packaging Busybox environment (*_install direcroty*) into an archive.
+See *pack.sh* script for packaging Busybox environment (*_install* directory) into an archive.
+
+Note which files are being copied into *_install*.
+
 An empty environment directory has to be created first, for example: *env_dir*
 ```
 mkdir env_dir
 ```
 Script usage:
 ```
+chmod +x pack.sh
 ./pack.sh env_dir
 ```
+(*chmod* has to be done only once)
+
+Review contents of env_dir.
+
+## Run
+
+See *run.sh* script for running target with a previously packaged environment.
+
+For example:
+```
+chmod +x run.sh
+./run.sh env_dir
+```
+(*chmod* has to be done only once)
+
+To close QEMU target, press following two key combinations in sequence:
+> ctrl+a
+
+> x
+
 
 
 
