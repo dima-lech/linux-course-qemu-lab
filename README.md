@@ -2,7 +2,7 @@
 
 This repository walks through:
 * Setting up QEMU to emulate ARM target
-* Building custom (minimal) Linux environment, including busybox
+* Building custom (minimal) Linux environment, including Busybox
 * Running resulting images in QEMU
 
 ***NOTE***: scripts are provided here for ease of usage. It is ***very*** recommended to read through the scripts to understand what is being done, better yet to perform each action manually.
