@@ -11,12 +11,12 @@ This repository walks through:
 ## Credit
 
 Full credit goes to:
-Mark Veltzer
+[Mark Veltzer](https://github.com/veltzer)
 > https://github.com/veltzer/demos-qemu
 
 ## Additional Reading
 
-Bootlin - Embedded Linux training
+[Bootlin](https://bootlin.com) - Embedded Linux training
 
 > https://bootlin.com/training/embedded-linux
 
@@ -89,6 +89,9 @@ Setup with default *versatile* configuration first
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- versatile_defconfig
 ```
+
+  * (*Optional*) run *[menuconfig](https://en.wikipedia.org/wiki/Menuconfig)* and browse through the kernel settings with `make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig`. Note that these instructions rely on unmodified settings, but feel free to experiment after completing this exercise. For example: set a custom version string in *general settings*.
+
 Build kernel
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j`nproc`
@@ -143,7 +146,7 @@ Install Busybox - organize all built runtime environment binaries in *_install* 
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- install
 ```
 Use `ls -la _install` to review the hierarchy of *_install* (or `tree _install` if *tree* package was installed).
-This directory will be the *root* file system mounted in the target, i.e. the `/` mount point.
+This directory will be the *[root file system](https://en.wikipedia.org/wiki/Root_directory)* mounted in the target, i.e. the `/` mount point.
 
 
 ### (ADVANCED - NOT REQUIRED) Bash Build
@@ -186,8 +189,8 @@ Review each parameter passed to QEMU:
 * **machine**: target machine
 * **kernel**: packaged kernel image
 * **nographic**: use serial interface only
-* **dtb**: device tree blob for Linux boot corresponding to target machine
-* **initrd**: packed *initrd* image, in our case - the Busybox environment
+* **dtb**: [device tree](https://elinux.org/Device_Tree_Reference) blob for Linux boot corresponding to target machine
+* **initrd**: packed *[initrd](https://en.wikipedia.org/wiki/Initial_ramdisk)* image, in our case - the Busybox environment
 * **append**: additional parameters passed to kernel, in our case - executed user-space binary from *initrd*
 
 Usage example:
@@ -362,10 +365,11 @@ If boot fails:
 
 Explore the running target environment:
 * Do `ls -la /bin` and compare the contents with Busybox *_install* directory
-* Do `cat /var/log/messages` to see the *syslog* messages
+* Do `cat /var/log/messages` to see the *[syslog](https://en.wikipedia.org/wiki/Syslog)* messages
 * Do `mount` to see all mounted file systems
 * Do `echo $SHELL` to see currently running shell
-* View contents of *inittab* (`cat /etc/inittab` on target or `cat inittab` in working directory), and identify settings which correspond to the points above
+* Do `uname -r` and verify kernel version
+* View contents of *[inittab](https://github.com/brgl/busybox/blob/master/examples/inittab)* (`cat /etc/inittab` on target or `cat inittab` in working directory), and identify settings which correspond to the points above
 
 
 To close QEMU target, press following two key combinations in sequence:
