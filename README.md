@@ -60,7 +60,8 @@ Keep in mind that different projects could use different approaches for pasing t
 By calling `make` we are invoking the build rules described in the current directory's *Makefile*. The arguments used in instructions below can be generally split into three categories:
 1. **Makefile flags**: described above (*ARCH*, *CROSS_COMPILE*). These flags are passed to the Makefile in order to determine the build settings. They are specific to the currently used Makefile.
 2. **Make switches**: options for make itself. For example, use `-j8` in order to run 8 concurrent jobs for faster build time. Generally this number is selected to be equal to the number of CPU cores using `nproc`, as such: `` -j`nproc` ``.
-3. **Target**: "what" to build, e.g. `all`, `clean`, etc. Multiple targets can be specified, each one will be invoked sequentially in the order specified. Must be the last argument(s) for `make` command. This is also specific to the currently used Makefile.
+3. **Target**: "what" to build, e.g. `all`, `clean`, etc. Multiple targets can be specified, each one will be invoked sequentially in the order specified. Must be the last argument(s) for `make` command. If no target is specified then the default one is used (normally `all`). This is also specific to the currently used Makefile.  
+For example: `make (...) menuconfig` builds and displays a menu-style configuration, where the project's settings can be modified before building it.
 
 
 ### Linux Kernel Build
