@@ -196,9 +196,163 @@ chmod +x run.sh
 ```
 (*chmod* has to be done only once)
 
-System should boot correctly. If it does, ***congratulations!*** You have your first Linux system built from scratch.
+System should boot correctly and display a functional shell. If it does, ***congratulations!*** You have your first Linux system built from scratch.
 
-If not:
+<details>
+  <summary>[Expand for boot log example]</summary>
+
+  ```
+$ ./run.sh env_dir
+ALSA lib confmisc.c:767:(parse_card) cannot find card '0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_card_driver returned error: No such file or directory
+ALSA lib confmisc.c:392:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1246:(snd_func_refer) error evaluating name
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM default
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+ALSA lib confmisc.c:767:(parse_card) cannot find card '0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_card_driver returned error: No such file or directory
+ALSA lib confmisc.c:392:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1246:(snd_func_refer) error evaluating name
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM default
+alsa: Could not initialize DAC
+alsa: Failed to open `default':
+alsa: Reason: No such file or directory
+audio: Failed to create voice `lm4549.out'
+vpb_sic_write: Bad register offset 0x2c
+Booting Linux on physical CPU 0x0
+Linux version 6.7.5-DIMA_L (dima@DIMA-DELL) (arm-linux-gnueabi-gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #1 Fri Feb 23 07:31:32 IST 2024
+CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=00093177
+CPU: VIVT data cache, VIVT instruction cache
+OF: fdt: Machine model: ARM Versatile PB
+Memory policy: Data cache writeback
+Zone ranges:
+  Normal   [mem 0x0000000000000000-0x0000000007ffffff]
+Movable zone start for each node
+Early memory node ranges
+  node   0: [mem 0x0000000000000000-0x0000000007ffffff]
+Initmem setup node 0 [mem 0x0000000000000000-0x0000000007ffffff]
+Kernel command line: rdinit=/sbin/init
+Dentry cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
+Inode-cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
+Built 1 zonelists, mobility grouping on.  Total pages: 32512
+mem auto-init: stack:off, heap alloc:off, heap free:off
+Memory: 119128K/131072K available (5034K kernel code, 186K rwdata, 1340K rodata, 216K init, 149K bss, 11944K reserved, 0K cma-reserved)
+SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+VIC @(ptrval): id 0x00041190, vendor 0x41
+FPGA IRQ chip 0 "interrupt-controller" @ (ptrval), 20 irqs, parent IRQ: 47
+clocksource: arm,sp804: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275 ns
+sched_clock: 32 bits at 1000kHz, resolution 1000ns, wraps every 2147483647500ns
+sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+Console: colour dummy device 80x30
+printk: legacy console [tty0] enabled
+Calibrating delay loop... 2020.14 BogoMIPS (lpj=10100736)
+CPU: Testing write buffer coherency: ok
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Setting up static identity map for 0x8400 - 0x8458
+VFP support v0.3: implementor 41 architecture 1 part 10 variant 9 rev 0
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+NET: Registered PF_NETLINK/PF_ROUTE protocol family
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+platform vga: Fixed dependency cycle(s) with /bridge/ports/port@1/endpoint
+amba 10120000.display: Fixed dependency cycle(s) with /bridge/ports/port@0/endpoint
+platform 10000000.sysreg:display@0: Fixed dependency cycle(s) with /amba/display@10120000/port@0/endpoint@0
+Serial: AMBA PL011 UART driver
+101f1000.serial: ttyAMA0 at MMIO 0x101f1000 (irq = 28, base_baud = 0) is a PL011 rev1
+printk: legacy console [ttyAMA0] enabled
+101f2000.serial: ttyAMA1 at MMIO 0x101f2000 (irq = 29, base_baud = 0) is a PL011 rev1
+101f3000.serial: ttyAMA2 at MMIO 0x101f3000 (irq = 30, base_baud = 0) is a PL011 rev1
+uart-pl011 10009000.serial: aliased and non-aliased serial devices found in device tree. Serial port enumeration may be unpredictable.
+10009000.serial: ttyAMA3 at MMIO 0x10009000 (irq = 54, base_baud = 0) is a PL011 rev1
+pps_core: LinuxPPS API ver. 1 registered
+pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+PTP clock support registered
+clocksource: Switched to clocksource arm,sp804
+NET: Registered PF_INET protocol family
+IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+tcp_listen_portaddr_hash hash table entries: 1024 (order: 0, 4096 bytes, linear)
+Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+TCP bind hash table entries: 1024 (order: 1, 8192 bytes, linear)
+TCP: Hash tables configured (established 1024 bind 1024)
+UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+NET: Registered PF_UNIX/PF_LOCAL protocol family
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp-with-tls transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+NetWinder Floating Point Emulator V0.97 (double precision)
+Trying to unpack rootfs image as initramfs...
+workingset: timestamp_bits=30 max_order=15 bucket_order=0
+jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+romfs: ROMFS MTD (C) 2007 Red Hat, Inc.
+io scheduler mq-deadline registered
+io scheduler kyber registered
+io scheduler bfq registered
+pl061_gpio 101e4000.gpio: PL061 GPIO chip registered
+pl061_gpio 101e5000.gpio: PL061 GPIO chip registered
+pl061_gpio 101e6000.gpio: PL061 GPIO chip registered
+pl061_gpio 101e7000.gpio: PL061 GPIO chip registered
+versatile-tft-panel 10000000.sysreg:display@0: no panel detected
+drm-clcd-pl111 10120000.display: set up callbacks for Versatile PL110
+drm-clcd-pl111 10120000.display: found bridge on endpoint 1
+drm-clcd-pl111 10120000.display: Using non-panel bridge
+[drm] Initialized pl111 1.0.0 20170317 for 10120000.display on minor 0
+drm-clcd-pl111 10120000.display: enable Versatile CLCD connectors
+Console: switching to colour frame buffer device 100x37
+Freeing initrd memory: 3600K
+drm-clcd-pl111 10120000.display: [drm] fb0: pl111drmfb frame buffer device
+brd: module loaded
+physmap-flash 34000000.flash: versatile/realview flash protection
+physmap-flash 34000000.flash: physmap platform flash device: [mem 0x34000000-0x37ffffff]
+34000000.flash: Found 1 x32 devices at 0x0 in 32-bit bank. Manufacturer ID 0x000000 Chip ID 0x000000
+Intel/Sharp Extended Query Table at 0x0031
+Using buffer write method
+smc91x.c: v1.1, sep 22 2004 by Nicolas Pitre <nico@fluxnic.net>
+smc91x 10010000.net eth0: SMC91C11xFD (rev 1) at (ptrval) IRQ 41
+
+smc91x 10010000.net eth0: Ethernet addr: 52:54:00:12:34:56
+rtc-ds1307 0-0068: registered as rtc0
+rtc-ds1307 0-0068: setting system clock to 2024-02-27T09:10:55 UTC (1709025055)
+versatile reboot driver registered
+leds-syscon 10000008.0.led: registered LED (null)
+leds-syscon 10000008.1.led: registered LED (null)
+leds-syscon 10000008.2.led: registered LED (null)
+leds-syscon 10000008.3.led: registered LED (null)
+leds-syscon 10000008.4.led: registered LED (null)
+leds-syscon 10000008.5.led: registered LED (null)
+leds-syscon 10000008.6.led: registered LED (null)
+leds-syscon 10000008.7.led: registered LED (null)
+ledtrig-cpu: registered to indicate activity on CPUs
+NET: Registered PF_PACKET protocol family
+mmci-pl18x fpga:0b: mmc1: PL181 manf 41 rev0 at 0x1000b000 irq 49,50 (pio)
+mmci-pl18x fpga:05: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 59,60 (pio)
+clk: Disabling unused clocks
+Freeing unused kernel image (initmem) memory: 216K
+Kernel memory protection not selected by kernel config.
+Run /sbin/init as init process
+input: AT Raw Set 2 keyboard as /devices/platform/amba/amba:fpga/10006000.kmi/serio0/input/input0
+=== Hello World! ===
+~ # input: ImExPS/2 Generic Explorer Mouse as /devices/platform/amba/amba:fpga/10007000.kmi/serio1/input/input2
+~ #
+  ```
+  
+</details>
+
+If boot fails:
 * Close QEMU target (see below)
 * Go over each step above again and verify correctness
 
