@@ -49,6 +49,8 @@ sudo apt install gcc make flex bison libncurses-dev (...)
 
 ### General Notes
 
+#### Cross-Compiling
+
 Note that since we are building for an ARM target, we have to use a *cross-compiler*. If we invoke `gcc` directly we are using our *native* toolchain which compiles only for our current architecture by default (x86_64). To invoke a cross-compiler, we have to use the format *arch*-*os*-*abi*-**gcc**, and in our case: `arm-linux-gnueabi-gcc`.
 
 To achieve this we normally pass the **prefix** of our cross-compiler (and sometimes the architecture as well) to the Makefile, e.g. `make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-`. This will tell the Makefile to use our cross compile instead of the native one.
