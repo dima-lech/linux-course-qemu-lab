@@ -138,9 +138,9 @@ This directory will be the *root* file system mounted in the target, i.e. the `/
 
 Bash version used: 5.2.21
 
-Good luck :)
+Good luck ;)
 
-(hint: see configure-make-bash.sh)
+*(hint: see configure-make-bash.sh)*
 
 
 ## Package
