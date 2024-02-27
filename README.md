@@ -115,16 +115,23 @@ Configure using menu
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
 ```
 Enable static build option
-> Settings --> Build static binary
+* Navigate in menu to:
+> Settings --> Build static binary (no shared libs)
+
+* Press *space* to mark option with '*'
+* Press right arrow to select *Exit* multiple times
+* Answer *Yes* to save configuration
 
 Build Busybox
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j`nproc`
 ```
-Install Busybox - organize all runtime environment binaries in *_install* directory
+Install Busybox - organize all built runtime environment binaries in *_install* directory
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- install
 ```
+Use `ls -la _install` to review the hierarchy of *_install* (or `tree _install` if *tree* package was installed).
+This directory will be the *root* file system mounted in the target, i.e. the `/` mount point.
 
 
 ### (ADVANCED - NOT REQUIRED) Bash
