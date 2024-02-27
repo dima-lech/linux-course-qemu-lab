@@ -170,14 +170,28 @@ Review contents of *env_dir*.
 
 See *run.sh* script for running target with a previously packaged environment.
 
-For example:
+Review each parameter passed to QEMU:
+* **machine**: target machine
+* **kernel**: packaged kernel image
+* **nographic**: use serial iinterface only
+* **dtb**: device tree blob for Linux boot corresponding to target machine
+* **initrd**: packed *initrd* image, in our case - the Busybox environment
+* **append**: additional parameters passed to kernel, in our case - executed user-space binary from *initrd*
+
+Usage example:
 ```
 chmod +x run.sh
 ./run.sh env_dir
 ```
 (*chmod* has to be done only once)
 
-Explore the running target environment, for example:
+System should boot correctly. If it does, congratulations! You have your first Linux system built from scratch.
+
+If not:
+* Close QEMU target (see below)
+* Go over each step above again and verify correctness
+
+Explore the running target environment:
 * Do `ls -la /bin` and compare the contents with Busybox *_install* directory
 * Do `cat /var/log/messages` to see the *syslog* messages
 * Do `mount` to see all mounted file systems
