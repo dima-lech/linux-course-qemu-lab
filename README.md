@@ -47,14 +47,23 @@ sudo apt install gcc make flex bison libncurses-dev (...)
 
 ## Build
 
+### General Notes
+
 Note that since we are building for an ARM target, we have to use a *cross-compiler*. If we invoke `gcc` directly we are using our *native* toolchain which compiles only for our current architecture by default (x86_64). To invoke a cross-compiler, we have to use the format *arch*-*os*-*abi*-**gcc**, and in our case: `arm-linux-gnueabi-gcc`.
 
 To achieve this we normally pass the **prefix** of our cross-compiler (and sometimes the architecture as well) to the Makefile, e.g. `make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-`. This will tell the Makefile to use our cross compile instead of the native one.
 
 Keep in mind that different projects could use different approaches for pasing this information to the build system, so it's always recommended to check the project's documentation first.
 
+#### Using Make
 
-### Linux
+By calling `make` we are invoking the build rules described in the current directory's *Makefile*. The arguments used in instructions below can be generally split into three categories:
+1. **Makefile flags**: described above (*ARCH*, *CROSS_COMPILE*). These flags are passed to the Makefile in order to determine the build settings. They are specific to the currently used Makefile.
+2. **Make switches**: options for make itself. For example, use `-j8` in order to run 8 concurrent jobs for faster build time. Generally this number is selected to be equal to the number of CPU cores using `nproc`, as such: `` -j`nproc` ``.
+3. **Target**: "what" to build, e.g. `all`, `clean`, etc. Multiple targets can be specified, each one will be invoked sequentially in the order specified. Must be the last argument(s) for `make` command. This is also specific to the currently used Makefile.
+
+
+### Linux Kernel Build
 
 Kernel version used: 6.7.5 (probably could be used with any 6.7.***x***)
 
@@ -82,7 +91,7 @@ Build kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j`nproc`
 ```
 
-### Busybox
+### Busybox Build
 
 Busybox provides a minimal user-space runtime environment, and includes:
 * Shell (*sh*)
@@ -134,7 +143,7 @@ Use `ls -la _install` to review the hierarchy of *_install* (or `tree _install` 
 This directory will be the *root* file system mounted in the target, i.e. the `/` mount point.
 
 
-### (ADVANCED - NOT REQUIRED) Bash
+### (ADVANCED - NOT REQUIRED) Bash Build
 
 Bash version used: 5.2.21
 
