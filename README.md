@@ -199,6 +199,7 @@ chmod +x run.sh
 
 System should boot correctly and display a functional shell. If it does, ***congratulations!*** You have your first Linux system built from scratch.
 
+---
 <details>
   <summary>[Expand for boot log example]</summary>
 
@@ -352,6 +353,8 @@ input: AT Raw Set 2 keyboard as /devices/platform/amba/amba:fpga/10006000.kmi/se
   ```
   
 </details>
+
+---
 
 If boot fails:
 * Close QEMU target (see below)
