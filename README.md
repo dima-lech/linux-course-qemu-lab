@@ -1,8 +1,8 @@
 # Linux Course - QEMU Lab
 
 This repository walks through:
-* Setting up QEMU to emulate ARM target
-* Building custom (minimal) Linux environment, including Busybox
+* Setting up [QEMU](https://www.qemu.org) to emulate an ARM target
+* Building custom (minimal) Linux environment, including [Linux Kernel](https://www.kernel.org) and [Busybox](https://busybox.net)
 * Running resulting images in QEMU
 
 ***NOTE***: scripts are provided here for ease of usage. It is ***very*** recommended to read through the scripts to understand what is being done, better yet to perform each action manually.
@@ -51,7 +51,7 @@ sudo apt install gcc make flex bison libncurses-dev (...)
 
 #### Cross-Compiling
 
-Note that since we are building for an ARM target, we have to use a *cross-compiler*. If we invoke `gcc` directly we are using our *native* toolchain which compiles only for our current architecture by default (x86_64). To invoke a cross-compiler, we have to use the format *arch*-*os*-*abi*-**gcc**, and in our case: `arm-linux-gnueabi-gcc`.
+Note that since we are building for an ARM target, we have to use a [cross-compiler](https://en.wikipedia.org/wiki/Cross_compiler). If we invoke `gcc` directly we are using our *native* toolchain which compiles only for our current architecture by default (x86_64). To invoke a cross-compiler, we have to use the format *arch*-*os*-*abi*-**gcc**, and in our case: `arm-linux-gnueabi-gcc`.
 
 To achieve this we normally pass the **prefix** of our cross-compiler (and sometimes the architecture as well) to the Makefile, e.g. `make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-`. This will tell the Makefile to use our cross compile instead of the native one.
 
@@ -197,7 +197,7 @@ chmod +x run.sh
 ```
 (*chmod* has to be done only once)
 
-System should boot correctly. If it does, congratulations! You have your first Linux system built from scratch.
+System should boot correctly. If it does, ***congratulations!*** You have your first Linux system built from scratch.
 
 If not:
 * Close QEMU target (see below)
@@ -212,8 +212,7 @@ Explore the running target environment:
 
 
 To close QEMU target, press following two key combinations in sequence:
-> ctrl+a
-
+> ctrl+a  
 > x
 
 
