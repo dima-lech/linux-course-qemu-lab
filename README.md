@@ -29,20 +29,13 @@ Emulated target is: Arm Versatile Board (versatilepb)
 
 ## Setup
 
-Install following package for QEMU ARM architecture:
-> qemu-system-arm
-
-In Ubuntu:
-```
-sudo apt install qemu-system-arm
-```
-
-Install following package for ARM cross-compiler:
+Install following packages for QEMU ARM architecture and ARM cross-compiler:
+> qemu-system-arm  
 > gcc-arm-linux-gnueabi
 
 In Ubuntu:
 ```
-sudo apt install gcc-arm-linux-gnueabi
+sudo apt install qemu-system-arm gcc-arm-linux-gnueabi
 ```
 
 Additional packages may be required throughout these instructions, install as needed.
@@ -53,6 +46,13 @@ sudo apt install gcc make flex bison libncurses-dev (...)
 
 
 ## Build
+
+Note that since we are building for an ARM target, we have to use a *cross-compiler*. If we invoke `gcc` directly we are using our *native* toolchain which compiles only for our current architecture by default (x86_64). To invoke a cross-compiler, we have to use the format *arch*-*os*-*abi*-**gcc**, and in our case: `arm-linux-gnueabi-gcc`.
+
+To achieve this we normally pass the **prefix** of our cross-compiler (and sometimes the architecture as well) to the Makefile, e.g. `make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-`. This will tell the Makefile to use our cross compile instead of the native one.
+
+Keep in mind that different projects could use different approaches for pasing this information to the build system, so it's always recommended to check the project's documentation first.
+
 
 ### Linux
 
