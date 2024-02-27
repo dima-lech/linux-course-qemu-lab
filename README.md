@@ -98,6 +98,10 @@ Change directory
 ```
 cd busybox-1.36.1
 ```
+Setup with default configuration first
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- defconfig
+```
 Configure using menu
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
