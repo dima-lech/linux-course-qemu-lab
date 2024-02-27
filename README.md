@@ -90,6 +90,10 @@ Busybox provides a minimal user-space runtime environment, and includes:
 
 Busybox version used: 1.36.1
 
+Return to top level directory (if still inside kernel source directory)
+```
+cd ..
+```
 Obtain Busybox sources
 ```
 wget https://busybox.net/downloads/busybox-1.36.1.tar.bz2
@@ -117,7 +121,7 @@ Build Busybox
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j`nproc`
 ```
-Install Busybox - organize all running environment binaries in *_install* directory
+Install Busybox - organize all runtime environment binaries in *_install* directory
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- install
 ```
@@ -138,6 +142,10 @@ See *pack.sh* script for packaging Busybox environment (*_install* directory) in
 
 Note which files are being copied into *_install*.
 
+Return to top level directory (if still inside Busybox or Bash source directory)
+```
+cd ..
+```
 An empty environment directory has to be created first, for example: *env_dir*
 ```
 mkdir env_dir
