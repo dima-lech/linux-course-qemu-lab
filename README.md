@@ -177,6 +177,14 @@ chmod +x run.sh
 ```
 (*chmod* has to be done only once)
 
+Explore the running target environment, for example:
+* Do `ls -la /bin` and compare the contents with Busybox *_install* directory
+* Do `cat /var/log/messages` to see the *syslog* messages
+* Do `mount` to see all mounted file systems
+* Do `echo $SHELL` to see currently running shell
+* View contents of *inittab* (`cat /etc/inittab` on target or `cat inittab` in working directory), and identify settings which correspond to the points above
+
+
 To close QEMU target, press following two key combinations in sequence:
 > ctrl+a
 
