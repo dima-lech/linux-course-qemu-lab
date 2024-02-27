@@ -73,9 +73,13 @@ Change directory
 ```
 cd linux-6.7.5
 ```
-Build *versatile_defconfig* configuration
+Setup with default *versatile* configuration first
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- versatile_defconfig
+```
+Build kernel
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j`nproc`
 ```
 
 ### Busybox
