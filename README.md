@@ -34,6 +34,7 @@ Install following packages for QEMU ARM architecture and ARM cross-compiler:
 
 In Ubuntu:
 ```
+sudo apt update
 sudo apt install qemu-system-arm gcc-arm-linux-gnueabi
 ```
 
