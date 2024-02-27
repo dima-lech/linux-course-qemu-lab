@@ -41,7 +41,7 @@ sudo apt install qemu-system-arm gcc-arm-linux-gnueabi
 Additional packages may be required throughout these instructions, install as needed.
 For example on Ubuntu:
 ```
-sudo apt install gcc make flex bison libncurses-dev (...)
+sudo apt install gcc make flex bison libncurses-dev bc xz-utils (...)
 ```
 
 
