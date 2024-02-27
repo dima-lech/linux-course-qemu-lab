@@ -23,8 +23,7 @@ Bootlin - Embedded Linux training
 
 ## Target Hardware
 
-Emulated target is: Arm Versatile Board (versatilepb)
-> https://www.qemu.org/docs/master/system/arm/versatile.html
+Emulated target is: [Arm Versatile Board](https://www.qemu.org/docs/master/system/arm/versatile.html) (*versatilepb*)
 
 
 ## Setup
