@@ -184,7 +184,7 @@ See *run.sh* script for running target with a previously packaged environment.
 Review each parameter passed to QEMU:
 * **machine**: target machine
 * **kernel**: packaged kernel image
-* **nographic**: use serial iinterface only
+* **nographic**: use serial interface only
 * **dtb**: device tree blob for Linux boot corresponding to target machine
 * **initrd**: packed *initrd* image, in our case - the Busybox environment
 * **append**: additional parameters passed to kernel, in our case - executed user-space binary from *initrd*
