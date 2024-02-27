@@ -364,11 +364,11 @@ If boot fails:
 * Go over each step above again and verify correctness
 
 Explore the running target environment:
+* Do `uname -r` and verify kernel version
 * Do `ls -la /bin` and compare the contents with Busybox *_install* directory
 * Do `cat /var/log/messages` to see the *[syslog](https://en.wikipedia.org/wiki/Syslog)* messages
 * Do `mount` to see all mounted file systems
 * Do `echo $SHELL` to see currently running shell
-* Do `uname -r` and verify kernel version
 * View contents of *[inittab](https://github.com/brgl/busybox/blob/master/examples/inittab)* (`cat /etc/inittab` on target or `cat inittab` in working directory), and identify settings which correspond to the points above
 
 
