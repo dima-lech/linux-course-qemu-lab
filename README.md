@@ -14,6 +14,12 @@ Full credit goes to:
 Mark Veltzer
 > https://github.com/veltzer/demos-qemu
 
+## Additional Reading
+
+Bootlin - Embedded Linux training
+
+> https://bootlin.com/training/embedded-linux
+
 
 ## Target Hardware
 
@@ -67,38 +73,65 @@ Change directory
 ```
 cd linux-6.7.5
 ```
-Build *versatile_defconfig* configuration
+Setup with default *versatile* configuration first
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- versatile_defconfig
+```
+Build kernel
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j`nproc`
 ```
 
 ### Busybox
 
+Busybox provides a minimal user-space runtime environment, and includes:
+* Shell (*sh*)
+* Utilities (*ls*, *cat*, ...)
+
 Busybox version used: 1.36.1
 
+Return to top level directory (if still inside kernel source directory)
+```
+cd ..
+```
 Obtain Busybox sources
 ```
 wget https://busybox.net/downloads/busybox-1.36.1.tar.bz2
 ```
+Extract archive
+```
+tar -xvf busybox-1.36.1.tar.bz2
+```
 Change directory
 ```
 cd busybox-1.36.1
+```
+Setup with default configuration first
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- defconfig
 ```
 Configure using menu
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
 ```
 Enable static build option
-> Settings --> Build static binary
+* Navigate in menu to:
+> Settings --> Build static binary (no shared libs)
+
+* Press *space* to mark option with '*'
+* Press right arrow to select *Exit* multiple times
+* Answer *Yes* to save configuration
 
 Build Busybox
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j`nproc`
 ```
-Install Busybox - organize all running environment binaries in *_install* directory
+Install Busybox - organize all built runtime environment binaries in *_install* directory
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- install
 ```
+Use `ls -la _install` to review the hierarchy of *_install* (or `tree _install` if *tree* package was installed).
+This directory will be the *root* file system mounted in the target, i.e. the `/` mount point.
 
 
 ### (ADVANCED - NOT REQUIRED) Bash
@@ -107,18 +140,48 @@ Bash version used: 5.2.21
 
 Good luck :)
 
+(hint: see configure-make-bash.sh)
+
 
 ## Package
 
-See *pack.sh* script for packaging Busybox environment (*_install direcroty*) into an archive.
+See *pack.sh* script for packaging Busybox environment (*_install* directory) into an archive.
+
+Note which files are being copied into *_install*.
+
+Return to top level directory (if still inside Busybox or Bash source directory)
+```
+cd ..
+```
 An empty environment directory has to be created first, for example: *env_dir*
 ```
 mkdir env_dir
 ```
 Script usage:
 ```
+chmod +x pack.sh
 ./pack.sh env_dir
 ```
+(*chmod* has to be done only once)
+
+Review contents of *env_dir*.
+
+## Run
+
+See *run.sh* script for running target with a previously packaged environment.
+
+For example:
+```
+chmod +x run.sh
+./run.sh env_dir
+```
+(*chmod* has to be done only once)
+
+To close QEMU target, press following two key combinations in sequence:
+> ctrl+a
+
+> x
+
 
 
 
