@@ -127,7 +127,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
 ```
 Enable static build option
 * Navigate in menu to:
-> Settings --> Build static binary (no shared libs)
+  > Settings --> Build static binary (no shared libs)
 
 * Press *space* to mark option with '*'
 * Press right arrow to select *Exit* multiple times
