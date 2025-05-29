@@ -41,7 +41,7 @@ sudo apt install qemu-system-arm gcc-arm-linux-gnueabi
 Additional packages may be required throughout these instructions, install as needed.
 For example on Ubuntu:
 ```
-sudo apt install gcc make flex bison libncurses-dev libssl-dev bc xz-utils bzip2 cpio wget (...)
+sudo apt install gcc make flex bison libncurses-dev libssl-dev bc xz-utils bzip2 cpio wget
 ```
 
 
@@ -68,7 +68,7 @@ For example: `make (...) menuconfig` builds and displays a menu-style configurat
 
 ### Linux Kernel Build
 
-Kernel version used: 6.7.5 (probably could be used with any 6.7.***x***)
+Tested with kernel version 6.7.5.
 
 Obtain from:
 > https://kernel.org
